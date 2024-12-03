@@ -7,7 +7,7 @@
  * Allows plugins to use their own update API.
  *
  * @author  Pippin Williamson
- * @version 2.1.7.20
+ * @version 2.1.7.21
  */
 class SCD_Upgrade {
 
