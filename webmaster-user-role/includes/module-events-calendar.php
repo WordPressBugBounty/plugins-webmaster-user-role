@@ -1,13 +1,50 @@
 <?php
+
+/**
+ * Simple Client Dashboard Events Calendar Module
+ *
+ * @package Simple_Client_Dashboard
+ */
 class SCD_Events_Calendar extends SCD_Base_Module {
 
+	/**
+	 * Plugin object
+	 */
 	public $plugin;
+
+	/**
+	 * Capabilities
+	 *
+	 * @var array
+	 */
 	public $caps;
 
+	/**
+	 * Constructor
+	 *
+	 * @param object $plugin Main plugin object.
+	 */
 	function __construct( $plugin ) {
 		$this->plugin = $plugin;
 		$this->hooks();
+		$this->init();
+	}
 
+	/**
+	 * Register init hooks
+	 *
+	 * @return void
+	 */
+	function init() {
+		add_action( 'init', array( $this, 'set_caps_default' ), 0 );
+	}
+
+	/**
+	 * Set default capabilities for Events Calendar
+	 *
+	 * @return void
+	 */
+	function set_caps_default() {
 		$this->caps = array(
 			'events'     => array(
 				'edit_tribe_event'   => __( 'Manage Events', 'webmaster-user-role' ),
@@ -24,6 +61,11 @@ class SCD_Events_Calendar extends SCD_Base_Module {
 		);
 	}
 
+	/**
+	 * Register hooks
+	 *
+	 * @return void
+	 */
 	function hooks() {
 		if ( empty( $this->is_active() ) ) {
 			return;
@@ -35,10 +77,20 @@ class SCD_Events_Calendar extends SCD_Base_Module {
 		}
 	}
 
+	/**
+	 * Check if the Events Calendar plugin is active
+	 *
+	 * @return bool
+	 */
 	function is_active() {
 		return class_exists( 'Tribe__Events__Main' );
 	}
 
+	/**
+	 * Filter the settings section for Events Calendar
+	 *
+	 * @return array
+	 */
 	function settings_section( $sections ) {
 		$section = array(
 			'title'    => __( 'Events Calendar', 'webmaster-user-role' ),
@@ -83,6 +135,12 @@ class SCD_Events_Calendar extends SCD_Base_Module {
 		return $sections;
 	}
 
+	/**
+	 * Filter the section to add capabilities
+	 *
+	 * @param array $section Section data.
+	 * @return array
+	 */
 	function default_capabilities( $capabilities ) {
 		foreach ( $this->caps as $cap_cpt => $cap_array ) {
 			foreach ( $cap_array as $cap => $cap_label ) {
@@ -95,6 +153,12 @@ class SCD_Events_Calendar extends SCD_Base_Module {
 		return $capabilities;
 	}
 
+	/**
+	 * Filter the capabilities for the Events Calendar
+	 *
+	 * @param array $capabilities
+	 * @return array
+	 */
 	function capabilities( $capabilities ) {
 		$webmaster_user_role_config = $this->plugin->settings->get();
 		if ( ! is_array( $webmaster_user_role_config ) ) {
