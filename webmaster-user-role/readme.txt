@@ -3,8 +3,8 @@
 Contributors: N Squared, croixhaug
 Tags: client, restrict access, role, admin, user, webmaster, capabilities, administrator, editor, permission, user roles
 Requires at least: 3.5
-Tested up to: 6.9
-Stable tag: 2.1.7.24
+Tested up to: 7.0
+Stable tag: 2.1.7.25
 
 Restrict permissions with Simple Client Dashboard. Our new "Admin" user role between Administrator and Editor is perfect for clients and Webmasters. 
 

@@ -3,7 +3,7 @@
 Plugin Name: Simple Client Dashboard - WP Limited Admin User Role
 Plugin URI: https://nsquared.io/webmaster-user-role/
 Description: Adds an "Admin" user role between Administrator and Editor.  By default this user is the same as Administrator, without the capability to manage plugins or change themes
-Version: 2.1.7.24
+Version: 2.1.7.25
 Author: N Squared
 Author URI: https://nsquared.io
 Author Email: team@nsquared.io
@@ -97,7 +97,7 @@ if ( ! class_exists( 'Simple_Client_Dashboard' ) ) {
 
 		const slug = 'simple-client-dashboard';
 
-		const version = '1.7.24';
+		const version = '1.7.25';
 
 		const file = __FILE__;
 
